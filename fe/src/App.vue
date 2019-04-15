@@ -90,6 +90,16 @@ export default {
           icon: 'face',
           title: '사용자관리',
           to: '/user'
+        },
+        {
+          icon: 'face',
+          title: 'RestFul',
+          to: '/REST'
+        },
+        {
+          icon: 'face',
+          title: 'login',
+          to: '/login'
         }
       ],
       miniVariant: false,

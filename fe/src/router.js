@@ -17,6 +17,16 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: () => import('./views/user.vue')
+    },
+    {
+      path: '/REST',
+      name: 'rest',
+      component: () => import('./views/REST.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/login.vue')
     }
   ]
 })
