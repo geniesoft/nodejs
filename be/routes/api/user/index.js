@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 
+  res.send({ success: true, msg: 'post ok' })
 router.all('*', function(req, res, next) {
   next(createError(404, 'API를 찾을 수 없습니다.'));
 });
