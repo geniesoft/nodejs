@@ -3,7 +3,6 @@
     <v-layout row wrap>
       <v-flex xs12 sm3>
         <v-card>
-
           <v-card-title primary-title>
             <div>
               <h3 class="headline mb-0">get</h3>
@@ -17,10 +16,11 @@
           <v-card-actions>
             <v-btn flat color="orange" @click="getReq">submit</v-btn>
           </v-card-actions>
-          
-        </v-card>
 
+        </v-card>
       </v-flex>
+
+
       <v-flex xs12 sm3>
         <v-card>
 
@@ -107,7 +107,8 @@ export default {
 
     postReq () {
       axios.post('http://localhost:3000/api/user', {
-        user: 'postMan'
+        name: '마이스터', age: 12 // req.body
+        // user: 'postMan'
       })
         .then((r) => {
           this.postMd = JSON.stringify(r.data)

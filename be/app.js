@@ -6,7 +6,6 @@ var logger = require('morgan');
 const cors = require('cors'); //cors 설정
 
 
-
 var app = express();
 
 app.use(logger('dev'));
@@ -38,3 +37,69 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//JWT 토큰생성
+// const jwt = require('jsonwebtoken');
+// const key = 'key'
+// const token = jwt.sign({ id: 'genie', email: 'genie@geniesoft.io' }, key);
+// console.log(token)
+
+//JWT 토큰디코드
+// const decoded = jwt.verify(token, key)
+// console.log(decoded)
+
+
+// { id: 'genie', email: 'genie@geniesoft.io', iat: 1555848119 }x
+// console.log(new Date(decoded.iat * 1000).toLocaleString())x
+
+
+//몽구스 연결
+
+const mongoose = require('mongoose')
+
+const User = require('./models/users')
+// console.log(User)
+
+// 데이터 스키마 설정
+// const userSchema = new mongoose.Schema({
+//    name: { type: String, default: '', unique: true, index: true },
+//    age: { type: Number, default: 1 }
+//  })
+//
+// const User = mongoose.model('User', userSchema)
+
+mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true }, (err) => {
+   if (err) return console.error(err)
+   console.log('mongoose connected!')
+
+   //쓰기
+   User.create({ name: '하하' })
+       .then(r => console.log(r))
+        .catch(e => console.error(e))
+
+   //읽기
+   // User.find()
+   //      .then(r => console.log(r))
+   //      .catch(e => console.error(e))
+
+  // 업데이트(수정)
+  // User.updateOne({ _id: '5cbd50967c00ec110c8d7912' }, { $set: { age: 27 } })
+  //
+  // .then(r => {
+  //   console.log(r)
+  //   console.log('updated')
+  //   return User.find()
+  // })
+  //
+  // .then(r => console.log(r))
+  // .catch(e => console.error(e))
+
+  //삭제
+  // User.remove({})
+  // User.deleteMany({})
+
+  // User.deleteOne({ name: '하하' })
+  //     .then(r => console.log(r))
+  //     .catch(e => console.error(e))
+
+})

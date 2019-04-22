@@ -2,6 +2,15 @@ var express = require('express');
 var createError = require('http-errors');
 var router = express.Router();
 
+//미들웨어1
+router.all('*', function(req, res, next) {
+  console.log(req.headers)
+
+  if (req.path === '/xxx') return res.send({ status : 'OK'})
+  next()
+});
+
+
 /* GET home page. */
 router.get('/hello', function(req, res, next) {
   res.send({ msg: 'hello', a: 1 })
