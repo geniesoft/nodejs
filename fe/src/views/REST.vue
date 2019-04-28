@@ -153,8 +153,8 @@ export default {
   methods: {
     getReq () {
       axios.get('http://localhost:3000/api/user', {
-          user: 'getMan'
-        })
+        user: 'getMan'
+      })
         .then((r) => {
           this.getMd = JSON.stringify(r.data)
         })
@@ -165,10 +165,10 @@ export default {
 
     postReq () {
       axios.post('http://localhost:3000/api/user', {
-          name: '마이스터',
-          age: 12 // req.body
-          // user: 'postMan'
-        })
+        name: '마이스터',
+        age: 12 // req.body
+        // user: 'postMan'
+      })
         .then((r) => {
           this.postMd = JSON.stringify(r.data)
         })
@@ -179,8 +179,8 @@ export default {
 
     putReq () {
       axios.put('http://localhost:3000/api/user', {
-          user: 'putMan'
-        })
+        user: 'putMan'
+      })
         .then((r) => {
           this.putMd = JSON.stringify(r.data)
         })
@@ -201,16 +201,18 @@ export default {
     mdUp () {
       // console.log('mdup')
       this.dialog = true
+      this.userName = ''
+      this.userAge = ''
     },
     postUser () {
       console.log(this.userName, this.userAge)
       this.dialog = false
       this.pop(this.userName)
       axios.post('http://localhost:3000/api/user', {
-          name: this.userName,
-          age: this.userAge
-          // user: 'postMan'
-        })
+        name: this.userName,
+        age: this.userAge
+        // user: 'postMan'
+      })
         .then((r) => {
           this.pop('사용자 등록 완료')
           this.getUsers() // 데이터갱신
@@ -239,13 +241,12 @@ export default {
     putUser () {
       this.dialog = false
       axios.put(`http://localhost:3000/api/user/${this.putId}`, {
-          name: this.userName,
-          age: this.userAge
-        })
+        name: this.userName,
+        age: this.userAge
+      })
         .then((r) => {
           this.pop('사용자 수정 완료')
           this.getUsers()
-
         })
         .catch((e) => {
           this.pop(e.message)
