@@ -10,6 +10,11 @@ router.all('*', function(req, res, next) {
   next()
 });
 
+  router.use('/sign', require('./sign'))
+  router.all('*', function(req, res, next) {
+    // 토큰 검사
+    next()
+  });
 
 /* GET home page. */
 router.get('/hello', function(req, res, next) {

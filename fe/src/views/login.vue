@@ -8,13 +8,13 @@
         <v-card>
           <div class="pa-3">
             <v-text-field
-                v-model="email"
+                v-model="form.id"
                 label="이메일을 입력하세요"
 
             >
             </v-text-field>
             <v-text-field
-                v-model="password"
+                v-model="form.pwd"
                 label="패스워드를 입력하세요"
                 type="password"
             >
@@ -23,7 +23,7 @@
              large
              block
              color="primary"
-             @click="login()"
+             @click="signIn()"
             >로그인</v-btn>
           </div>
         </v-card>
@@ -33,35 +33,47 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
-      email: null,
-      password: null,
-      allUsers: [
-        {id:1, name: 'genie', email:'genie@geniesoft.io', password:'12345'},
-        {id:2, name: 'test', email:'test@geniesoft.io', password:'12345'}
-      ]
+      form: {
+        id: '',
+        pwd: ''
+      }
+    //   email: null,
+    //   password: null,
+    //   allUsers: [
+    //     {id:1, name: 'genie', email:'genie@geniesoft.io', password:'12345'},
+    //     {id:2, name: 'test', email:'test@geniesoft.io', password:'12345'}
+    //   ]
     }
   },
   methods: {
-    login() {
-      // 전체 유저에서 해당 이메일로 유저를 찾는다.
-      let selectUser = null
-      this.allUsers.forEach(user =>{
-        if(user.email === this.email) selectUser = user
-      })
-      if (selectUser === null) alert('입력하신 이메일이 없습니다')
-        else{
-        if(selectUser.password !== this.password)
-          alert('이메일과 비밀번호가 일치하지 않습니다.')
-          else{
-          alert('로그인 완료')
+
+    signIn () {
+            axios.post('http://localhost:3000/api/sign/in', this.form)
+            .then(r => console.log(r.data))
+            .catch(e => console.error(e.message))
         }
-      }
-      // 그 유저의 비밀번호와 입력된 비밀번호를 비교한다.
-      console.log(this.email, this.password)
+
+    // login() {
+    //   // 전체 유저에서 해당 이메일로 유저를 찾는다.
+    //   let selectUser = null
+    //   this.allUsers.forEach(user =>{
+    //     if(user.email === this.email) selectUser = user
+    //   })
+    //   if (selectUser === null) alert('입력하신 이메일이 없습니다')
+    //     else{
+    //     if(selectUser.password !== this.password)
+    //       alert('이메일과 비밀번호가 일치하지 않습니다.')
+    //       else{
+    //       alert('로그인 완료')
+    //     }
+    //   }
+    //   // 그 유저의 비밀번호와 입력된 비밀번호를 비교한다.
+    //   console.log(this.email, this.password)
+    // }
     }
   }
-}
 </script>

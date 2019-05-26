@@ -40,7 +40,7 @@ module.exports = app;
 
 //JWT 토큰생성
 // const jwt = require('jsonwebtoken');
-// const key = 'key'
+// const key = '마이스터고'
 // const token = jwt.sign({ id: 'genie', email: 'genie@geniesoft.io' }, key);
 // console.log(token)
 
@@ -49,8 +49,8 @@ module.exports = app;
 // console.log(decoded)
 
 
-// { id: 'genie', email: 'genie@geniesoft.io', iat: 1555848119 }x
-// console.log(new Date(decoded.iat * 1000).toLocaleString())x
+// { id: 'genie', email: 'genie@geniesoft.io', iat: 1555848119 }
+// console.log(new Date(decoded.iat * 1000).toLocaleString())
 
 
 //몽구스 연결
@@ -97,6 +97,8 @@ mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true }, (
   //삭제
   // User.remove({})
   // User.deleteMany({})
+  //   .then(r => console.log(r))
+  //   .catch(err => console.error(err))
 
   // User.deleteOne({ name: '하하' })
   //     .then(r => console.log(r))

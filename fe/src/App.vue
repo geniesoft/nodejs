@@ -100,6 +100,11 @@ export default {
           icon: 'face',
           title: 'login',
           to: '/login'
+        },
+        {
+          icon: 'face',
+          title: 'todo',
+          to: '/todo'
         }
       ],
       miniVariant: false,
