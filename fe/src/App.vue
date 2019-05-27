@@ -98,6 +98,11 @@ export default {
         },
         {
           icon: 'face',
+          title: 'sign',
+          to: '/sign'
+        },
+        {
+          icon: 'face',
           title: 'login',
           to: '/login'
         }

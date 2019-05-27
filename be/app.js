@@ -97,6 +97,8 @@ mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true }, (
   //삭제
   // User.remove({})
   // User.deleteMany({})
+  // .then(r => console.log(r))
+  // .catch(e => console.error(e))
 
   // User.deleteOne({ name: '하하' })
   //     .then(r => console.log(r))
