@@ -39,10 +39,10 @@ export default {
     signIn () {
       axios.post('http://localhost:3000/api/sign/in', this.form)
         .then(r => {
-            if (!r.data.success) return console.error(r.data.msg) //데이터가 맞으면
-            localStorage.setItem('token', r.data.token) //로컬스토리지에 토큰값 저장
-            this.$router.push('/user') // 페이지 이동
-            // location.href = '/header'
+          if (!r.data.success) return console.error(r.data.msg) //데이터가 맞으면
+          localStorage.setItem('token', r.data.token) //로컬스토리지에 토큰값 저장
+          this.$router.push('/test') // 페이지 이동
+          // location.href = '/header'
           })
         // .then(r => console.log(r.data))
         .catch(e => console.error(e.message))

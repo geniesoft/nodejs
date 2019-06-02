@@ -2,8 +2,6 @@
   <v-app>
     <v-navigation-drawer
       persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
       v-model="drawer"
       enable-resize-watcher
       fixed
@@ -15,7 +13,6 @@
           v-for="(item, i) in items"
           :key="i"
           :to="item.to"
-
         >
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
@@ -28,45 +25,31 @@
     </v-navigation-drawer>
     <v-toolbar
       app
-      :clipped-left="clipped"
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>web</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <v-menu bottom left>
+          <v-btn icon slot="activator">
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile @click="$router.push('sign')">
+              <v-list-tile-title>로그인</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile @click="signOut">
+              <v-list-tile-title>로그아웃</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <router-view/>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+    <v-footer fixed app>
+      <span>&copy; 2019</span>
     </v-footer>
   </v-app>
 </template>
@@ -77,40 +60,39 @@ export default {
   name: 'App',
   data () {
     return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
+      drawer: null,
       items: [
         {
           icon: 'home',
           title: '홈',
-          to: '/'
+          to: {
+            path: '/'
+          }
         },
         {
           icon: 'face',
           title: '사용자관리',
-          to: '/user'
+          to: {
+            path: '/user'
+          }
         },
         {
           icon: 'face',
-          title: 'RestFul',
-          to: '/REST'
-        },
-        {
-          icon: 'face',
-          title: 'sign',
-          to: '/sign'
-        },
-        {
-          icon: 'face',
-          title: 'login',
-          to: '/login'
+          title: '테스트',
+          to: {
+            path: '/test'
+          }
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      title: this.$apiRootPath
+    }
+  },
+  mounted () {
+  },
+  methods: {
+    signOut () {
+      localStorage.removeItem('token')
+      this.$router.push('/')
     }
   }
 }

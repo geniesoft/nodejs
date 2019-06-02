@@ -39,8 +39,8 @@ export default {
       email: null,
       password: null,
       allUsers: [
-        {id:1, name: 'genie', email:'genie@geniesoft.io', password:'12345'},
-        {id:2, name: 'test', email:'test@geniesoft.io', password:'12345'}
+        { id:1, name: 'genie', email:'genie@geniesoft.io', password:'12345'},
+        { id:2, name: 'test', email:'test@geniesoft.io', password:'12345'}
       ]
     }
   },
