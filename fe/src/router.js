@@ -29,14 +29,46 @@ export default new Router({
       component: () => import('./views/login.vue')
     },
     {
-      path: '/test',
-      name: 'test',
-      component: () => import('./views/test.vue')
-    },
-    {
       path: '/sign',
       name: 'sign',
       component: () => import('./views/sign.vue')
-    }
+    },
+    {
+      path: '/test',
+      name: '헤더',
+      component: () => import('./views/test'),
+      // beforeEnter: authCheck
+      beforeEnter: (to, from, next) => {
+        console.log(to)
+        console.log(from)
+       if (!localStorage.getItem('token')) return next('block')
+        next()
+      }
+    },
+    {
+      path: '/block',
+      name: '차단',
+      component: () => import('./views/block.vue')
+    },
+    {
+      path: '/',
+      name: 'lv0',
+      component: () => import('./views/lv0')
+    },,
+    {
+      path: '/lv1',
+      name: 'lv1',
+      component: () => import('./views/lv1')
+    },,
+    {
+      path: '/lv2',
+      name: 'lv2',
+      component: () => import('./views/lv2')
+    },,
+    {
+      path: '/lv3',
+      name: 'lv3',
+      component: () => import('./views/lv3')
+    },
   ]
 })
