@@ -16,7 +16,7 @@ export default {
         .catch(e => console.log(e.message))
     },
     apiWithTrash () {
-      axios.get(`http://localhost:3000/api/test`, { headers: { Authorization: 'abcdefghijk' } })
+      axios.get(`http://localhost:3000/api/test`, { headers: { Authorization: 'abcdefasdasdghijk' } })
         .then(r => console.log(r.data))
         .catch(e => console.log(e.message))
     }

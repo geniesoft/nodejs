@@ -64,9 +64,30 @@ export default {
       items: [
         {
           icon: 'home',
-          title: '홈',
+          title: '레벨0',
           to: {
             path: '/'
+          }
+        },
+        {
+          icon: 'home',
+          title: '레벨1',
+          to: {
+            path: '/lv1'
+          }
+        },
+        {
+          icon: 'home',
+          title: '레벨2',
+          to: {
+            path: '/lv2'
+          }
+        },
+        {
+          icon: 'home',
+          title: '레벨3',
+          to: {
+            path: '/lv3'
           }
         },
         {
@@ -92,7 +113,7 @@ export default {
   methods: {
     signOut () {
       localStorage.removeItem('token')
-      this.$router.push('/')
+      this.$router.push('/sign')
     }
   }
 }

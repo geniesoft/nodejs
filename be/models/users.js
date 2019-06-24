@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   age: { type: Number, default: 1 },
   id: { type: String, default: '', unique: true, index: true },
   pwd: { type: String, default: '' },
+  lv: { type: Number, default: 2 }, //add
+  inCnt: { type: Number, default: 0 }, //add
   retry: { type: Number, default: 0 }
 })
 
@@ -19,7 +21,7 @@ User.findOne({ id: cfg.admin.id })
     if (!r) return User.create({ id: cfg.admin.id, pwd: cfg.admin.pwd, name: cfg.admin.name })
     return Promise.resolve(null)
   })
-  .then((r) => {
+  .then((r) => { 
     if (r) console.log(`admin:${r.id} created!`)
   })
   .catch((e) => {

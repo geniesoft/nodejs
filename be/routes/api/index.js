@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const cfg = require('../../config')
 
 router.use('/sign', require('./sign'));
-
+// router.use('/manage', require('./manage'))
 
 //토큰확인
 const verifyToken = (t) => {
@@ -18,7 +18,7 @@ const verifyToken = (t) => {
   })
 }
 
-//미들웨어1
+//미들웨어
 router.all('*', function(req, res, next) {
   // 토큰 검사
   const token = req.headers.authorization
@@ -32,6 +32,7 @@ router.all('*', function(req, res, next) {
 
 router.use('/test', require('./test'));
 router.use('/user', require('./user'));
+
 
 
 
